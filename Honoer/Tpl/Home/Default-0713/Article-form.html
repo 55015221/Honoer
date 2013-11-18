@@ -1,0 +1,19 @@
+<fieldset class="sd-box">
+    <legend>我来说一说:</legend>
+    <form class="form" action="{:U('reply',array('aid'=>$data['article_id']))}" method="post">
+        <ul>
+            <li>
+                <label class="k"><em>*</em>Email:</label>
+                <span class="v"><input type="text" name="email" value=""></span>
+            </li>
+            <li>
+                <label class="k"><em>*</em>Content:</label>
+                <span class="v"><textarea rows="4" cols="60"></textarea></span>
+            </li>
+            <li>
+                <label class="k">&nbsp;</label>
+                <span class="v"><button type="submit" class="btn">留言</button></span>
+            </li>
+        </ul>
+    </form>
+</fieldset>

@@ -1,0 +1,31 @@
+<div id="container-images" class="photos clearfix">
+    <volist name="data" id="vo">
+        <div class="photo">
+            <a href="__PUBLIC__/Collect/{$vo.belle_path}">
+                <img src="{:U(img)}?Public/Collect/{$vo.belle_path}&w=200"/>
+            </a>
+        </div>
+    </volist>
+</div>
+
+
+<nav id="page_nav">
+    <a href="{:U('Index/read',array('page'=>$_GET['page']+1))}"></a>
+</nav>
+
+<script>
+    $(function(){
+    
+        var $container = $('#container-images');
+    
+        $container.isotope({
+            itemSelector : '.photo',
+            layoutMode : 'fitRows'
+        });
+    
+    });
+</script>
+
+
+
+

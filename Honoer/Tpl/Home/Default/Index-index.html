@@ -1,0 +1,88 @@
+<script type="text/javascript" src="__PUBLIC__/Plugins/jQuery/jquery.masonry_2.1.min.js"></script>
+<div class="waterfall">
+    <volist name="data" id="vo">
+        <div class="item-box">
+            <ul>
+                <noempty name="{$vo.article_picpath}">
+                    <li><img src="{$vo.article_picpath}" art="{$vo.article_title}"/></li>
+                </noempty>
+                <li class="item-tit"><a href="{:U('Article/read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}">{$vo.article_title}</a></li>
+                <li>分类：{$vo.class_name}</li>
+                <li><span class="more"><a href="{:U('Article/read',array('aid'=>$vo['article_id']))}" title="去围观">去围观</a></span></li>
+                <li>时间：{$vo.create_time}</li>
+                <li>{$vo.article_intro}</li>
+
+            </ul>
+        </div>
+    </volist>
+    <!--加载中-->
+    <div id="loading" class="loading-wrap">
+        <span class="loading">加载中，请稍后...</span>
+    </div>
+    <!--加载中-->
+
+</div>
+<div class="clearfix"></div>
+<script>
+    $(function(){
+        var $container = $('.waterfall');
+        $container.masonry({
+            itemSelector : '.item-box', 
+            isAnimated: true
+        });
+        var loading = $("#loading").data("on", false);
+        var page=2;
+        $(window).scroll(function(){
+            if(loading.data("on")) return ;
+            if($(document).scrollTop() > $(document).height()-$(window).height()-60){
+                loading.data("on", true).fadeIn();
+                page++;
+                var url = "{:U('Article/masonry')}";
+                getArticle(url,page);
+            }
+        }); 
+        
+        var getArticle = function(url,p){
+            $.ajax({
+                url:url,
+                data:{p:p},
+                dataType:'json',
+                error:function(e){
+                    console.log(e);
+                },
+                success:function(obj){
+                    var data = obj.data.data;
+                    var html = "";
+                    if(!$.isEmptyObject(data)){
+                        $.each(data,function(){
+                            html +='<div class="item-box"><ul>';
+                            if(this.article_picpath)
+                                html +='<li><img width="250" height="250" src="'+this.article_picpath+'" class="img-polaroid" /></li>';
+                            html +='<li class="item-tit"><a href="'+this.url+'" title="'+this.article_title+'">'+this.article_title+'</a></li>';
+                            html +='<li>分类：<a href="'+this.class_name+'">'+this.class_name+'</a></li>';
+                            html +='<li><span class="more"><a href="'+this.url+'">去围观</a></span></li>';
+                            html +='<li>'+this.article_intro+'</li>';
+                            html +='</ul></div>';
+                        })
+                        var $newElems = $(html).css({
+                            opacity: 0
+                        }).appendTo($container);
+                        $newElems.imagesLoaded(function(){
+                            $newElems.animate({
+                                opacity: 1
+                            });
+                            $container.masonry( 'appended', $newElems, true );
+                        });
+                        loading.data("on", false).fadeOut();
+                    }else{
+                        loading.find("span").html("已经加载完了所有的记录");
+                        setTimeout(function(){
+                            loading.fadeOut();
+                        },3000);
+                    }
+                }
+            });
+        }
+    });
+    
+</script>

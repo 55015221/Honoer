@@ -1,0 +1,26 @@
+<div class="span9">
+    <notempty name="data">
+        <volist name="data" id="vo">
+            <section class="clearfix box">
+                <span class="thumb">
+                    <a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}">
+                        <img src="../Public/Images/no-pic.png" data-original="{$vo.article_picpath}" width="140" height="98" />
+                    </a>
+                </span>
+                <div class="item-box">
+                    <h3 class="item-tit"><a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}">{$vo.article_title}</a></h3>
+                    <div class="item-tags"><span>Tags:{$vo.class_name}</span><span>Reply:{$vo.article_view}</span><span>Time:{$vo.create_time|timer}</span><span>Author:{$vo.user_nickname}</span></div>
+                    <div class="item-intro">{$vo.article_intro}</div>
+                </div>
+                <span class="more"><a href="{:U('read',array('aid'=>$vo['article_id']))}" title="阅读全文">阅读全文</a></span>
+            </section>
+        </volist>
+        <else />
+        亲~ 找不到你要的内容！
+    </notempty>
+    <div class="page">{$page}</div>
+</div>
+<div class="span3">
+    <include file="Article:right" />
+</div>
+

@@ -1,0 +1,15 @@
+<div class="row-fluid">
+    <div class="span2">
+        <include file="Common:left" />
+    </div>
+    <div class="span10">
+        <table class="table table-bordered table-striped table-hover">
+            <volist name="webinfo" id="vo" key="k">
+                <tr>
+                    <td>{$key}：</td>
+                    <td>{$vo}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>

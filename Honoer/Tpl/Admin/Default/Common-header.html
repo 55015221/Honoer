@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="span3">
+        <a target="_blank" class="brand" href="{$Think.config.WEB_URL}" title="{$Think.config.WEB_NAME}">
+            <img alt="{$Think.config.WEB_NAME}" src="__PUBLIC__/logo.gif" style="background: #1E71B1;">
+        </a>
+    </div>
+    <div class="span9">
+        <ul class="nav nav-pills pull-right dc-nav">
+            <volist name="topnav" id="vo">
+                <li <if condition="MODULE_NAME eq $vo['class_module']">class="active"</if>><a href="{:U($vo['class_module'].'/index')}">{$vo.class_name}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>

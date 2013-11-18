@@ -1,0 +1,26 @@
+<script type="text/javascript" src="__PUBLIC__/Plugins/jQuery/jquery.masonry_2.1.min.js"></script>
+<div class="waterfall">
+    <div id="waterfall">
+        <volist name="data" id="vo">
+            <div class="item-box">
+                <ul>
+                    <noempty name="{$vo.article_picpath}">
+                        <li><img src="{$vo.article_picpath}" art="{$vo.article_title}"/></li>
+                    </noempty>
+                    <li class="item-tit"><a href="{:U('Article/read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}">{$vo.article_title}</a></li>
+                    <li>分类：{$vo.class_name}</li>
+                    <li><span class="more"><a href="{:U('Article/read',array('aid'=>$vo['article_id']))}" title="去围观">去围观</a></span></li>
+                    <li>时间：{$vo.create_time}</li>
+                    <li>{$vo.article_intro}</li>
+
+                </ul>
+            </div>
+        </volist>
+        <!--加载中-->
+        <div id="loading" class="loading-wrap">
+            <span class="loading">加载中，请稍后...</span>
+        </div>
+        <!--加载中-->
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<?php
+
+define('ALLOW_ALL_EXTERNAL_SITES', true);   //ÔÊÐíÍâÁ´Í¼Æ¬
+define('FILE_CACHE_ENABLED', false);   //¹Ø±Õ»º´æ
+define('FILE_CACHE_DIRECTORY', './cache');  //ÉèÖÃ»º´æÄ¿Â¼
+define('WEBSHOT_ENABLED', true);  //ÉèÖÃ»º´æÄ¿Â¼
+define('DEFAULT_Q', 100);  //Í¼Æ¬Ñ¹ËõÖÊÁ¿100×î´ó

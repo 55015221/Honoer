@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <title>{$Think.config.WEB_NAME}-管理后台</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="__PUBLIC__/Plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../Public/Css/style.css">
+        <link rel="stylesheet" href="__PUBLIC__/Plugins/kindeditor-4.1.6/themes/default/default.css" />
+
+        <!--[if lte IE 6]>
+        
+            <link rel="stylesheet" href="../Public/bootstrap/css/bootstrap-ie6.min.css">
+        <![endif]-->
+        <!--[if lte IE 7]>
+            <link rel="stylesheet" href="../Public/bootstrap/css/ie.css">
+        <![endif]-->
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugins/jQuery/jquery-1.9.1.min.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugins/jQuery/jquery.form.js"></script>
+<!--        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugins/UEditor/editor_config.js"></script>
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugins/UEditor/editor_all_min.js"></script>-->
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../Public/Js/function.js"></script>
+        <script type='text/javascript'>
+            window.UEDITOR_HOME_URL = "__APP__";
+            <!--	
+            var ROOT='__ROOT__';
+            var PUBLIC='__PUBLIC__';
+            var _Public='../Public';
+            //-->
+        </script>
+    </head>  
+    <body>
+        <div id="header">
+            <div class="container">
+                <include file="Common:header" />
+            </div>
+        </div>
+        <div id="wrap">
+            <div class="container">
+                {__CONTENT__}
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <include file="Common:footer" />
+            </div>
+        </div>
+    </body>
+</html>

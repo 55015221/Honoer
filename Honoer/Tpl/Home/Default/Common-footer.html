@@ -1,0 +1,14 @@
+<div class="user-login">
+    <empty name="get_user_info">
+        <a href="{:U('Login/qq_login')}"><img src="../Public/Images/qq_login.png"></a>
+        <else />
+        <img src="{$get_user_info.figureurl_2}" alt="{$get_user_info.nickname}">
+        <p>
+            <span class="blue">{$get_user_info.nickname}</span>&nbsp;({$get_user_info.gender})&nbsp;&nbsp;<a href="{:U('Login/logout')}" title="退出">退出</a>
+        </p>
+    </empty>
+</div>
+<div class="copyright">
+    <notempty name="get_user_info"><a href="{:U('Admin/Index/index')}" target="_blank" title="管理后台">管理后台</a></notempty>
+    {$Think.config.WEB_RECODE}&nbsp;&nbsp;友情链接请E-mail：{$Think.config.WEB_EMAIL}
+</div>

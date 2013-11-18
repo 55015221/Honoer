@@ -1,0 +1,6 @@
+<ul class="nav nav-list docs-sidenav">
+    <li class="docs-header"><a href="javascript:;">{$subnav.class_name}</a></li>
+    <volist name="subnav['_child']" id="vo">
+        <li <if condition="ACTION_NAME eq $vo['class_action']">class="active"</if>><a href="{:U($subnav['class_module'].'/'.$vo['class_action'])}">{$vo.class_name}</a></li>
+    </volist>
+</ul>

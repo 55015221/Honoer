@@ -1,0 +1,92 @@
+<div class="row-fluid">
+    <div class="span2">
+        <include file="Common:left" />
+    </div>
+    <div class="span10">
+        <form method="post" enctype="multipart/form-data">
+            <table class="table table-bordered table-striped table-hover">
+                <colgroup>
+                    <col style="text-align: right;width: 120px;">
+                    <col>
+                </colgroup>
+                <tbody>
+                    <tr><td>网站名称：</td><td><input type="text" name="WEB_NAME" value="{$Think.config.WEB_NAME}"></td></tr>
+                    <tr><td>网站LOGO：</td><td>
+                            <input type="text" readonly="readonly" name="WEB_LOGO" id="uploadFile" />
+                            <button type="button" name="upload" id="uploadBtn">Upload</button>
+                        </td></tr>
+                    <tr><td>版权信息：</td><td><input type="text" name="WEB_RECODE" value="{$Think.config.WEB_RECODE}"></td></tr>
+                    <tr><td>网站ICP：</td><td><input type="text" name="WEB_ICP" value="{$Think.config.WEB_ICP}"></td></tr>
+                    <tr><td>统计代码：</td><td><textarea class="span12" rows="6" name="WEB_STATISTIC">{$Think.config.WEB_STATISTIC}</textarea></td></tr>
+                    <tr><td>分享代码：</td><td><textarea class="span12" rows="6" name="WEB_SHARE">{$Think.config.WEB_SHARE}</textarea></td></tr>
+                    <tr><td>默认模块：</td><td><input type="text" name="DEFAULT_MODULE" value="{$Think.config.DEFAULT_MODULE}"></td></tr>
+                    <tr><td>URL模式：</td><td>
+                            <select name="URL_MODEL">
+                                <option value="0" <if condition="C('URL_MODEL') eq 0">selected</if>>参数模式/0</option>
+                                <option value="1" <if condition="C('URL_MODEL') eq 1">selected</if>>PATHINFO模式/1</option>
+                                <option value="2" <if condition="C('URL_MODEL') eq 2">selected</if>>REWRITE模式/2</option>
+                                <option value="3" <if condition="C('URL_MODEL') eq 3">selected</if>>兼容模式/3</option>
+                            </select>
+                        </td></tr>
+                    <tr><td>分页数量：</td><td><input type="text" name="PAGESIZE" value="{$Think.config.PAGESIZE}"></td></tr>
+                    <tr><td>网站关键词：</td><td><input class="span6" type="text" name="KEYWORDS" value="{$Think.config.KEYWORDS}"></td></tr>
+                    <tr><td>网站描述：</td><td><textarea class="span12" rows="6" name="DESCRIPTION">{$Think.config.DESCRIPTION}</textarea></td></tr>
+                </tbody>
+            </table>
+            <button class="btn" type="submit" name="submit">保存</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/Plugins/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugins/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugins/swfupload/fileprogress.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugins/swfupload/handlers.js"></script>
+
+<script type="text/javascript">
+    var swfu;
+
+    window.onload = function() {
+        var settings = {
+            flash_url : "__PUBLIC__/Plugins/swfupload/swfupload.swf",
+            upload_url: "{:U('Upload/fileUp')}",
+            post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
+            file_size_limit : "100 MB",
+            file_types : "*.*",
+            file_types_description : "All Files",
+            file_upload_limit : 0, // 最多能上传多少个文件，0表示可以无限次上传
+            file_queue_limit : 1, // 允许队列一次处理多个个文件，1表示一次只能上传一个文件
+            debug: false,
+            // Button settings
+            //button_image_url: "images/TestImageNoText_65x29.png",
+            button_width: "65",
+            button_height: "29",
+            button_placeholder_id: "uploadBtn",
+            //button_text: '<span class="theFont">Hello</span>',
+            //button_text_style: ".theFont { font-size: 16; }",
+            //button_text_left_padding: 12,
+            //button_text_top_padding: 3,
+				
+            // The event handler functions are defined in handlers.js
+            file_queued_handler : fileQueued,
+            file_queue_error_handler : fileQueueError,
+            file_dialog_complete_handler : fileDialogComplete,
+            upload_start_handler : uploadStart,
+            upload_progress_handler : uploadProgress,
+            upload_error_handler : uploadError,
+            upload_success_handler : uploadSuccess,
+            upload_complete_handler : uploadComplete,
+            queue_complete_handler : queueComplete	// Queue plugin event
+        };
+
+        swfu = new SWFUpload(settings);
+    };
+</script>
+<script type='text/javascript'>
+    $(function(){
+        $("form").submit(function(){
+            doSubmit();
+            return false;
+        });
+    })
+</script>

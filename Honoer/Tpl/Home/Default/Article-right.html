@@ -1,0 +1,42 @@
+<div class="tabs">
+    <div class="tabs-tit">
+        <h3>最新文章</h3>
+    </div>
+    <div class="tabs-box">
+        <ul>
+            <volist name="new" id="vo">
+                <li>
+                    <a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}"><small>{$vo.create_time|timer="m/d"}</small>{$vo.article_title|cn_substr=32}</a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<div class="tabs">
+    <div class="tabs-tit">
+        <h3>热门文章</h3>
+    </div>
+    <div class="tabs-box">
+        <ul>
+            <volist name="hot" id="vo">
+                <li>
+                    <a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}"><small>{$vo.article_view}</small>{$vo.article_title|cn_substr=32}</a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<div class="tabs">
+    <div class="tabs-tit">
+        <h3>文章分类</h3>
+    </div>
+    <div class="tabs-box">
+        <ul>
+            <volist name="dataClass" id="vo">
+                <li <if condition="$vo['date'] eq $_GET['date']">class="active"</if>>
+                    <a href="{:U('index',array('date'=>$vo['date']))}" title="{$vo.date}"><small>{$vo.total}</small>{$vo.date}</a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>

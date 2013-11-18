@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="span9">
+        <volist name="data" id="vo">
+            <div class="ho-docs-box">
+                <div class="ho-docs-title">
+                    <span class="pull-left">{$vo.create_time|timer='Y-m-d'}</span>
+                    <h4><a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}">{$vo.article_title}</a></h4>
+                    <small>Author:{$vo.user_nickname} &nbsp; &nbsp; Tags:Source Title</small>
+                </div>
+                <div class="ho-docs-content">
+                    {$vo.article_content}
+                </div>
+            </div>
+        </volist>
+    </div>
+    <div class="span3">
+        <div class="input-append">
+            <input class="span2" name="keyword" placeholder="请输入关键词" id="appendedInputButton" type="text">
+            <button class="btn" name="search" type="button">Go!</button>
+        </div>
+        <ul class="nav nav-tabs nav-stacked ho-docs-list">
+            <volist name="hot" id="vo">
+                <li><a href="{:U('read',array('aid'=>$vo['article_id']))}" title="{$vo.article_title}"><small class="pull-right">{$vo.article_view}</small>{$vo.article_title|cn_substr=21}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<div class="page">{$page}</div>

@@ -1,0 +1,23 @@
+<form class="form-horizontal" action="{:U('reply',array('aid'=>$data['article_id']))}" method="post">
+    <fieldset>
+        <legend>Reply:</legend>
+        <div class="control-group">
+            <label class="control-label" for="comment_email">Email:</label>
+            <div class="controls">
+                <!--required pattern="/^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i"-->
+                <input class="span4" name="comment_email" type="email" id="email">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="comment_content">Comment:</label>
+            <div class="controls">
+                <textarea class="span6" id="comment_content" name="comment_content" rows="5" placeholder="内容"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">留言</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

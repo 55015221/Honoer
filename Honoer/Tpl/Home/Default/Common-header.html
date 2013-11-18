@@ -1,0 +1,34 @@
+<hgroup>
+    <a href="{$Think.config.WEB_URL}" title="{$Think.config.WEB_NAME}">
+        <img alt="{$Think.config.WEB_NAME}" src="{$Think.config.WEB_LOGO}">
+    </a>
+</hgroup>
+
+
+
+<nav>
+    <ul>
+        <volist name="topnav" id="vo">
+            <li <if condition="MODULE_NAME eq $vo['class_module']">class="active"</if>>
+            <notempty name="vo['_child']">
+                <a class="nav-child" href="{:U($vo['class_module'].'/index')}">{$vo.class_name}<i class="icon-caret"></i></a>
+                <dl>
+                    <volist name="vo['_child']" id="child">
+                        <dd <if condition="$_GET['cid'] eq $child['class_id']">class="active"</if>>
+                        <a href="{:U($vo['class_module'].'/index',array('cid'=>$child['class_id']))}">{$child.class_name}</a>
+                        </dd>
+                    </volist>
+                </dl>
+                <else />
+                <a href="{:U($vo['class_module'].'/index')}">{$vo.class_name}</a>
+            </notempty>
+            </li>
+        </volist>
+    </ul>
+</nav>
+
+
+<form class="search" action="{:U('Article/index')}" method="get">
+    <input name="keyword" placeholder="请输入关键词" type="text" value="{$_GET['keyword']}">
+    <button class="btn" name="search" value="Go!" type="submit">Go!</button>
+</form>

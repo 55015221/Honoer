@@ -1,0 +1,21 @@
+
+
+<div class="dc-box">
+    <div class="dc-tit">
+        <span class="pull-left text-center">{$data.create_time|timer}</span>
+        <h4>{$data.article_title}</h4>
+        <small class="pull-right">Author:{$data.user_nickname}&nbsp;Tags:Source Title</small>
+    </div>
+    <div class="dc-content">
+        {$data.article_content}
+    </div>
+    <div class="dc-prev-next text-center">
+        <small>上一篇：&nbsp;<empty name="prev">没有啦！<else /><a href="{:U('read',array('aid'=>$prev['article_id']))}" title="{$prev.article_title}">{$prev.article_title}</a></empty></small>
+        <small>下一篇：&nbsp;<empty name="next">没有啦！<else /><a href="{:U('read',array('aid'=>$next['article_id']))}" title="{$next.article_title}">{$next.article_title}</a></empty></small>
+    </div>
+</div>
+
+<!--include file="Article:reply" /-->
+<!--<div class="dc-box">-->
+<!-- include file="Article:form" / -->
+<!--</div>-->

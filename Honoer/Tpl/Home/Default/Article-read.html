@@ -1,0 +1,33 @@
+<div class="span9">
+    <article class="clearfix box">
+        <notempty name="data">
+            <div class="item-box">
+                <span class="item-tit">
+                    <h2>{$data.article_title}</h2>
+                </span>
+                <div class="item-tags">
+                    <span>Tags:{$data.class_name}</span>
+                    <span>Reply:{$data.article_view}</span>
+                    <span>Time:{$data.create_time|timer}</span>
+                    <span>Author:{$data.user_nickname}</span>
+                </div>
+                <div class="item-intro">{$data.article_content}</div>
+            </div>
+            <div class="pager">
+                <span>上一篇：&nbsp;<empty name="prev">没有啦！<else /><a href="{:U('read',array('aid'=>$prev['article_id']))}" title="{$prev.article_title}">{$prev.article_title|cn_substr=28}</a></empty></span>
+                <span>下一篇：&nbsp;<empty name="next">没有啦！<else /><a href="{:U('read',array('aid'=>$next['article_id']))}" title="{$next.article_title}">{$next.article_title|cn_substr=28}</a></empty></span>
+            </div>
+            <else />
+            亲~ 找不到你要的内容！
+        </notempty> 
+    </article>
+    <section class="hd-msg">
+        <include file="Article:comments" />
+    </section>
+    <section class="hd-form">
+        <include file="Article:form" />
+    </section>
+</div>
+<div class="span3">
+    <include file="Article:right" />
+</div>

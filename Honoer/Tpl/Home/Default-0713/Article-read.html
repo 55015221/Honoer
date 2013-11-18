@@ -1,0 +1,33 @@
+<div class="left">
+
+    <div class="con-list sd-box">
+        <notempty name="data">
+            <div class="box-txt">
+                <h2 class="tit">{$data.article_title}</h2>
+                <hr>
+                <div class="tags">
+                    <span>Tags:{$data.class_name}</span>
+                    <span>Reply:{$data.article_view}</span>
+                    <span>Time:{$data.create_time|timer}</span>
+                    <span>Author:{$data.user_nickname}</span>
+                </div>
+                <div class="box-con">{$data.article_content}</div>
+            </div>
+            <div class="prev-next">
+                <span>上一篇：&nbsp;<empty name="prev">没有啦！<else /><a href="{:U('read',array('aid'=>$prev['article_id']))}" title="{$prev.article_title}">{$prev.article_title|cn_substr=28}</a></empty></span>
+                <span>下一篇：&nbsp;<empty name="next">没有啦！<else /><a href="{:U('read',array('aid'=>$next['article_id']))}" title="{$next.article_title}">{$next.article_title|cn_substr=28}</a></empty></span>
+            </div>
+            <else />
+            亲~ 找不到你要的内容！
+        </notempty> 
+    </div>
+    <div class="comments">
+        <include file="Article:comments" />
+    </div>
+    <div class="comment-form">
+        <include file="Article:form" />
+    </div>
+</div>
+<div class="right">
+    <include file="Article:right" />
+</div>

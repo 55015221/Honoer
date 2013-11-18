@@ -1,0 +1,24 @@
+<notempty name="data['_comment']">
+    <ul>
+        <volist name="data['_comment']" id="vo">
+            <li <if condition="$key%2 eq 0">class="even"</if>>
+            <ol class="info clearfix">
+                <dl>
+                    <label class="k">昵称：</label>
+                    <span class="v">{$vo.comment_email|emailToNick}</span>
+                </dl>
+                <dl>
+                    <label class="k">时间：</label>
+                    <span class="v">{$vo.create_time|timer}</span>
+                </dl>
+            </ol>
+<!--            <div class="avatar">
+                <img src="../Public/Images/none.jpg" data-original="{$vo.article_picpath}" width="60" height="60" />
+            </div>-->
+            <div class="comment">
+                {$vo.comment_content}
+            </div>
+            </li>
+        </volist>
+    </ul>
+</notempty>

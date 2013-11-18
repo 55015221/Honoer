@@ -1,0 +1,22 @@
+
+<fieldset>
+    <legend>我来说一说</legend>
+    <form class="form" action="{:U('reply',array('aid'=>$data['article_id']))}" method="post" role="validationFrom">
+        <ul>
+            <li>
+                <label class="k"><em>*</em>Email:</label>
+                <span class="v"><input type="text" name="comment_email" value="" datatype="e" errormsg="邮箱格式不正确！" ></span>
+                <span class="Validform_checktip">邮箱不会公开~</span>
+            </li>
+            <li>
+                <label class="k"><em>*</em>Content:</label>
+                <span class="v"><textarea rows="4" cols="50" name="comment_content" datatype="*6-255"></textarea></span>
+                <span class="Validform_checktip"></span>
+            </li>
+            <li>
+                <label class="k">&nbsp;</label>
+                <span class="v"><button type="submit" class="btn">留言</button></span>
+            </li>
+        </ul>
+    </form>
+</fieldset>

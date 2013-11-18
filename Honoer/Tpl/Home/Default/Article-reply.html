@@ -1,0 +1,8 @@
+<volist name="data['_comment']" id="vo">
+    <div class="ho-docs-box">
+        <span class="pull-right"><small>Time:{$vo.create_time|substr=0,-3} </small></span>
+        {$vo.comment_email|save_user}:
+
+        <div class="ho-docs-reply">{$vo.comment_content}</div>
+    </div>
+</volist>
